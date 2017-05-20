@@ -1,0 +1,48 @@
+--region *.lua
+--Date
+--此文件由[BabeLua]插件自动生成
+local Time=UnityEngine.Time;
+local Vector3=UnityEngine.Vector3;
+local testNum=2000000;
+
+function CallCSFuncTest()
+    local t=Time.realtimeSinceStartup;
+    for i=1,testNum,1 do 
+        this:CallCSFuncTest();
+    end
+    print("CallCSFunc 200W time cost:"..(Time.realtimeSinceStartup-t));
+end
+
+function CallCSStaticFunc()
+    
+    local t=Time.realtimeSinceStartup;
+    for i=1,testNum,1 do
+        testCS.CallCSStaticFuncTest();
+    end
+    print("CallCSStaticFunc 200W time cost:"..(Time.realtimeSinceStartup-t));
+end
+
+
+function SetPositionTest()
+
+    local t=Time.realtimeSinceStartup;
+    for i=1,testNum,1 do
+        this.transform.localPosition=Vector3.New(i,i,i);
+    end
+    print("SetPositionTest 200W time cost:"..(Time.realtimeSinceStartup-t));
+end
+
+function ReadPositionTest()
+
+    local t=Time.realtimeSinceStartup;
+    for i=1,testNum,1 do
+        local pos=this.transform.localPosition
+    end
+    print("ReadPositionTest 200W time cost:"..(Time.realtimeSinceStartup-t));
+end
+
+function CallLuaFuncTest()
+
+end
+
+--endregion
